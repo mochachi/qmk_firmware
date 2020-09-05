@@ -358,7 +358,7 @@ void keyboard_task(void) {
 				}
 				break;
 			case 3:
-				if (matrix_row & 16)
+				if (matrix_row & 32)
 				{
 					LeftHand |= 1;
 				}
@@ -386,7 +386,7 @@ void keyboard_task(void) {
 				}
 				break;
 			case 7:
-				if (matrix_row & 16)
+				if (matrix_row & 32)
 				{
 					RightHand |= 1;
 				}
