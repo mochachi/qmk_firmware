@@ -300,11 +300,19 @@ void keyboard_init(void) {
  *
  * This is repeatedly called as fast as possible.
  */
+
+matrix_row_t firstHand = 0;
+matrix_row_t secondHand = 0;
+int mode = 0;
+int upDown = 0;
+matrix_row_t matrix_old = 0;
+
 void keyboard_task(void) {
     static matrix_row_t matrix_prev[MATRIX_ROWS];
     static uint8_t      led_status    = 0;
     matrix_row_t        matrix_row    = 0;
     matrix_row_t        matrix_change = 0;
+	matrix_row_t hand = 0;
 #ifdef QMK_KEYS_PER_SCAN
     uint8_t keys_processed = 0;
 #endif
@@ -318,7 +326,7 @@ void keyboard_task(void) {
     if (should_process_keypress()) {
         for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
             matrix_row    = matrix_get_row(r);
-            matrix_change = matrix_row ^ matrix_prev[r];
+            matrix_change = matrix_row ^ matrix_old;
             if (matrix_change) {
 #ifdef MATRIX_HAS_GHOST
                 if (has_ghost_in_row(r, matrix_row)) {
@@ -326,14 +334,86 @@ void keyboard_task(void) {
                 }
 #endif
                 if (debug_matrix) matrix_print();
-                matrix_row_t col_mask = 1;
-                for (uint8_t c = 0; c < MATRIX_COLS; c++, col_mask <<= 1) {
-                    if (matrix_change & col_mask) {
-                        action_exec((keyevent_t){
-                            .key = (keypos_t){.row = r, .col = c}, .pressed = (matrix_row & col_mask), .time = (timer_read() | 1) /* time should not be 0 */
-                        });
-                        // record a processed key
-                        matrix_prev[r] ^= col_mask;
+				hand = matrix_row | matrix_old;
+
+				if (matrix_row == hand)
+				{
+					upDown = 0;
+				}
+				else
+				{
+					if (upDown == 0)
+					{
+						upDown = 1;
+						if (mode == 0)
+						{
+							firstHand = hand - 1;
+							mode = 1;
+						}
+						else
+						{
+							secondHand = hand;
+							mode = 0;
+						}
+						if (mode == 0)
+						{
+							layer_on(0);
+							action_exec((keyevent_t) {
+								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
+									.pressed = 1,
+									.time = 1 /* time should not be 0 */
+							});
+							//wait_ms(20);
+							action_exec((keyevent_t) {
+								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
+									.pressed = 0,
+									.time = 1 /* time should not be 0 */
+							});
+
+							layer_on(1);
+							layer_off(0);
+							action_exec((keyevent_t) {
+								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
+									.pressed = 1,
+									.time = 1
+							});
+							//wait_ms(20);
+							action_exec((keyevent_t) {
+								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
+									.pressed = 0,
+									.time = 1
+							});
+
+							layer_on(2);
+							layer_off(1);
+							action_exec((keyevent_t) {
+								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
+									.pressed = 1,
+									.time = 1
+							});
+							//wait_ms(20);
+							action_exec((keyevent_t) {
+								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
+									.pressed = 0,
+									.time = 1
+							});
+
+							layer_on(0);
+							layer_off(2);
+						}
+				}
+			}
+
+				matrix_old = matrix_row;
+				//if (matrix_row == 0)
+				//{
+				//	clear_keyboard();
+				//}
+
+				for (uint8_t c = 0; c < MATRIX_COLS; c++) {
+					if (matrix_change & ((matrix_row_t)1 << c)) {
+						// record a processed key
+						matrix_prev[r] ^= ((matrix_row_t)1 << c);
 #ifdef QMK_KEYS_PER_SCAN
                         // only jump out if we have processed "enough" keys.
                         if (++keys_processed >= QMK_KEYS_PER_SCAN)
