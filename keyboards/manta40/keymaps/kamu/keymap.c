@@ -1,4 +1,4 @@
-/* Copyright 2019 yynmt
+/* Copyright 2020 mochachi
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
