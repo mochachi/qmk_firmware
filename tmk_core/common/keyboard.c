@@ -336,8 +336,6 @@ void keyboard_task(void) {
 			switch (r)
 			{
 			case 0:
-				break;
-			case 1:
 				if (matrix_row & 16)
 				{
 					LeftHand |= 16;
@@ -350,6 +348,8 @@ void keyboard_task(void) {
 				{
 					LeftHand |= 4;
 				}
+				break;
+			case 1:
 				break;
 			case 2:
 				if (matrix_row & 2)
@@ -364,8 +364,6 @@ void keyboard_task(void) {
 				}
 				break;
 			case 4:
-				break;
-			case 5:
 				if (matrix_row & 16)
 				{
 					RightHand |= 16;
@@ -378,6 +376,8 @@ void keyboard_task(void) {
 				{
 					RightHand |= 4;
 				}
+				break;
+			case 5:
 				break;
 			case 6:
 				if (matrix_row & 2)
