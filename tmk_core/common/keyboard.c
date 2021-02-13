@@ -318,6 +318,8 @@ void keyboard_task(void) {
 	matrix_row_t		hand_sum = 0;
 	matrix_row_t        hand_buffer = 0;
 	matrix_row_t        hand_change = 0;
+	matrix_row_t		handRow = 0;
+	matrix_row_t		handCol = 0;
 #ifdef QMK_KEYS_PER_SCAN
     uint8_t keys_processed = 0;
 #endif
@@ -381,7 +383,7 @@ void keyboard_task(void) {
 							upDown = 1;
 							if (mode == 0)
 							{
-								firstHand = oldHand - 1;
+								firstHand = oldHand;
 								mode = 0;
 							}
 							else
@@ -391,15 +393,142 @@ void keyboard_task(void) {
 							}
 							if (mode == 0)
 							{
+								switch (firstHand)
+								{
+								case 1:
+									handRow = 0;
+									handCol = 0;
+									break;
+								case 2:
+									handRow = 0;
+									handCol = 4;
+									break;
+								case 3:
+									handRow = 1;
+									handCol = 4;
+									break;
+								case 4:
+									handRow = 0;
+									handCol = 3;
+									break;
+								case 5:
+									handRow = 2;
+									handCol = 3;
+									break;
+								case 6:
+									handRow = 1;
+									handCol = 3;
+									break;
+								case 7:
+									handRow = 4;
+									handCol = 1;
+									break;
+								case 8:
+									handRow = 0;
+									handCol = 2;
+									break;
+								case 9:
+									handRow = 2;
+									handCol = 0;
+									break;
+								case 10:
+									handRow = 2;
+									handCol = 2;
+									break;
+								case 11:
+									handRow = 5;
+									handCol = 1;
+									break;
+								case 12:
+									handRow = 1;
+									handCol = 2;
+									break;
+								case 13:
+									handRow = 5;
+									handCol = 4;
+									break;
+								case 14:
+									handRow = 4;
+									handCol = 0;
+									break;
+								case 15:
+									handRow = 3;
+									handCol = 1;
+									break;
+								case 16:
+									handRow = 0;
+									handCol = 1;
+									break;
+								case 17:
+									handRow = 1;
+									handCol = 0;
+									break;
+								case 18:
+									handRow = 2;
+									handCol = 4;
+									break;
+								case 19:
+									handRow = 4;
+									handCol = 2;
+									break;
+								case 20:
+									handRow = 2;
+									handCol = 1;
+									break;
+								case 21:
+									handRow = 5;
+									handCol = 2;
+									break;
+								case 22:
+									handRow = 5;
+									handCol = 0;
+									break;
+								case 23:
+									handRow = 3;
+									handCol = 2;
+									break;
+								case 24:
+									handRow = 1;
+									handCol = 1;
+									break;
+								case 25:
+									handRow = 4;
+									handCol = 3;
+									break;
+								case 26:
+									handRow = 5;
+									handCol = 3;
+									break;
+								case 27:
+									handRow = 3;
+									handCol = 3;
+									break;
+								case 28:
+									handRow = 4;
+									handCol = 4;
+									break;
+								case 29:
+									handRow = 3;
+									handCol = 4;
+									break;
+								case 30:
+									handRow = 3;
+									handCol = 0;
+									break;
+								case 31:
+									handRow = 5;
+									handCol = 0;
+									break;
+								}
 								layer_on(layer);
 								action_exec((keyevent_t) {
-									.key = (keypos_t) { .col = firstHand << 8 },
+									.key = (keypos_t) { .row = handRow << 8, .col = handCol << 8 },
 										.pressed = 1,
 										.time = 1 /* time should not be 0 */
 								});
 								//wait_ms(20);
 								action_exec((keyevent_t) {
-									.key = (keypos_t) { .col = firstHand << 8 },
+									.key = (keypos_t) { .row = handRow << 8, .col = handCol << 8 },
 										.pressed = 0,
 										.time = 1 /* time should not be 0 */
 								});
@@ -431,13 +560,13 @@ void keyboard_task(void) {
 					{
 						layer_on(4);
 						action_exec((keyevent_t) {
-							.key = (keypos_t) { .col = 0 << 8 },
+							.key = (keypos_t) { .row = 0 << 8, .col = 0 << 8 },
 								.pressed = 1,
 								.time = 1 /* time should not be 0 */
 						});
 						//wait_ms(20);
 						action_exec((keyevent_t) {
-							.key = (keypos_t) { .col = 0 << 8 },
+							.key = (keypos_t) { .row = 0 << 8, .col = 0 << 8 },
 								.pressed = 0,
 								.time = 1 /* time should not be 0 */
 						});
@@ -447,13 +576,13 @@ void keyboard_task(void) {
 					{
 						layer_on(4);
 						action_exec((keyevent_t) {
-							.key = (keypos_t) { .col = 1 << 8 },
+							.key = (keypos_t) { .row = 0 << 8, .col = 1 << 8 },
 								.pressed = 1,
 								.time = 1 /* time should not be 0 */
 						});
 						//wait_ms(20);
 						action_exec((keyevent_t) {
-							.key = (keypos_t) { .col = 1 << 8 },
+							.key = (keypos_t) { .row = 0 << 8, .col = 1 << 8 },
 								.pressed = 0,
 								.time = 1 /* time should not be 0 */
 						});

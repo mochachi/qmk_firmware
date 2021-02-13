@@ -30,8 +30,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* key matrix size */
 #define MATRIX_ROWS 1
 #define MATRIX_COLS 12
-#define MATRIX_ROWS2 5
-#define MATRIX_COLS2 31
+#define MATRIX_ROWS2 7
+#define MATRIX_COLS2 5
 
 /*
  * Keyboard Matrix Assignments
