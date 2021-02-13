@@ -27,8 +27,8 @@ extern "C" {
 
 /* key matrix position */
 typedef struct {
-    uint16_t col;
-    uint16_t row;
+    uint32_t col;
+    uint32_t row;
 } keypos_t;
 
 /* key event */

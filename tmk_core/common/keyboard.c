@@ -301,10 +301,12 @@ void keyboard_init(void) {
  * This is repeatedly called as fast as possible.
  */
 
+matrix_row_t oldHand = 0;
 matrix_row_t firstHand = 0;
 matrix_row_t secondHand = 0;
 int mode = 0;
 int upDown = 0;
+int layer = 0;
 matrix_row_t matrix_old = 0;
 
 void keyboard_task(void) {
@@ -312,7 +314,10 @@ void keyboard_task(void) {
     static uint8_t      led_status    = 0;
     matrix_row_t        matrix_row    = 0;
     matrix_row_t        matrix_change = 0;
-	matrix_row_t hand = 0;
+	matrix_row_t		hand = 0;
+	matrix_row_t		hand_sum = 0;
+	matrix_row_t        hand_buffer = 0;
+	matrix_row_t        hand_change = 0;
 #ifdef QMK_KEYS_PER_SCAN
     uint8_t keys_processed = 0;
 #endif
@@ -327,82 +332,135 @@ void keyboard_task(void) {
         for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
             matrix_row    = matrix_get_row(r);
             matrix_change = matrix_row ^ matrix_old;
-            if (matrix_change) {
-#ifdef MATRIX_HAS_GHOST
-                if (has_ghost_in_row(r, matrix_row)) {
-                    continue;
-                }
-#endif
-                if (debug_matrix) matrix_print();
-				hand = matrix_row | matrix_old;
+			if (matrix_change) {
 
-				if (matrix_row == hand)
+				hand = 0;
+
+				hand_buffer = matrix_row;
+
+				if (hand_buffer & 4)
 				{
-					upDown = 0;
+					hand |= 16;
+				}
+				if (hand_buffer & 8)
+				{
+					hand |= 8;
+				}
+				if (hand_buffer & 16)
+				{
+					hand |= 4;
+				}
+				if (hand_buffer & 2048)
+				{
+					hand |= 2;
+				}
+				if (hand_buffer & 64)
+				{
+					hand |= 1;
+				}
+
+				hand_change = hand ^ oldHand;
+
+				if (hand_change) {
+#ifdef MATRIX_HAS_GHOST
+					if (has_ghost_in_row(r, matrix_row)) {
+						continue;
+					}
+#endif
+					if (debug_matrix) matrix_print();
+					hand_sum = hand | oldHand;
+
+					if (hand_sum == hand)
+					{
+						upDown = 0;
+					}
+					else
+					{
+						if (upDown == 0)
+						{
+							upDown = 1;
+							if (mode == 0)
+							{
+								firstHand = oldHand - 1;
+								mode = 0;
+							}
+							else
+							{
+								secondHand = hand;
+								mode = 0;
+							}
+							if (mode == 0)
+							{
+								layer_on(layer);
+								action_exec((keyevent_t) {
+									.key = (keypos_t) { .col = firstHand << 8 },
+										.pressed = 1,
+										.time = 1 /* time should not be 0 */
+								});
+								//wait_ms(20);
+								action_exec((keyevent_t) {
+									.key = (keypos_t) { .col = firstHand << 8 },
+										.pressed = 0,
+										.time = 1 /* time should not be 0 */
+								});
+								layer_off(layer);
+							}
+						}
+					}
 				}
 				else
 				{
-					if (upDown == 0)
+					if (hand_buffer & 256)
 					{
-						upDown = 1;
-						if (mode == 0)
-						{
-							firstHand = hand - 1;
-							mode = 1;
-						}
-						else
-						{
-							secondHand = hand;
-							mode = 0;
-						}
-						if (mode == 0)
-						{
-							layer_on(0);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
-									.pressed = 1,
-									.time = 1 /* time should not be 0 */
-							});
-							//wait_ms(20);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
-									.pressed = 0,
-									.time = 1 /* time should not be 0 */
-							});
+						layer = 0;
+					}
+					if (hand_buffer & 512)
+					{
+						layer = 1;
+					}
+					if (hand_buffer & 1024)
+					{
+						layer = 2;
+					}
+					if (hand_buffer & 128)
+					{
+						layer = 3;
+					}
 
-							layer_on(1);
-							layer_off(0);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
-									.pressed = 1,
-									.time = 1
-							});
-							//wait_ms(20);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
-									.pressed = 0,
-									.time = 1
-							});
-
-							layer_on(2);
-							layer_off(1);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
-									.pressed = 1,
-									.time = 1
-							});
-							//wait_ms(20);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = firstHand << 8, .col = secondHand << 8 },
-									.pressed = 0,
-									.time = 1
-							});
-
-							layer_on(0);
-							layer_off(2);
-						}
+					if (hand_buffer & 1)
+					{
+						layer_on(4);
+						action_exec((keyevent_t) {
+							.key = (keypos_t) { .col = 0 << 8 },
+								.pressed = 1,
+								.time = 1 /* time should not be 0 */
+						});
+						//wait_ms(20);
+						action_exec((keyevent_t) {
+							.key = (keypos_t) { .col = 0 << 8 },
+								.pressed = 0,
+								.time = 1 /* time should not be 0 */
+						});
+						layer_off(4);
+					}
+					if (hand_buffer & 2)
+					{
+						layer_on(4);
+						action_exec((keyevent_t) {
+							.key = (keypos_t) { .col = 1 << 8 },
+								.pressed = 1,
+								.time = 1 /* time should not be 0 */
+						});
+						//wait_ms(20);
+						action_exec((keyevent_t) {
+							.key = (keypos_t) { .col = 1 << 8 },
+								.pressed = 0,
+								.time = 1 /* time should not be 0 */
+						});
+						layer_off(4);
+					}
 				}
-			}
+				oldHand = hand;
 
 				matrix_old = matrix_row;
 				//if (matrix_row == 0)

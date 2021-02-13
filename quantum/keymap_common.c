@@ -179,7 +179,7 @@ __attribute__((weak)) void action_function(keyrecord_t *record, uint8_t id, uint
 // translates key to keycode
 __attribute__((weak)) uint16_t keymap_key_to_keycode(uint8_t layer, keypos_t key) {
     // Read entire word (16bits)
-    return pgm_read_word(&keymaps[(layer)][(key.row >> 8)][(key.col >> 8)]);
+    return pgm_read_word(&keymaps[(layer)][(key.col >> 8)]);
 }
 
 // translates function id to action
