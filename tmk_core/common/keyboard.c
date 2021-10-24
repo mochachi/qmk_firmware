@@ -444,13 +444,13 @@ void keyboard_task(void) {
 							upDown = 1;
 							layer_on(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand1 << 8, .col = hand2 << 8 },
+								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
 									.pressed = 1,
 									.time = 1 /* time should not be 0 */
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand1 << 8, .col = hand2 << 8 },
+								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
 									.pressed = 0,
 									.time = 1 /* time should not be 0 */
 							});
@@ -458,13 +458,13 @@ void keyboard_task(void) {
 							layer_on(1);
 							layer_off(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand1 << 8, .col = hand2 << 8 },
+								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand1 << 8, .col = hand2 << 8 },
+								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
 									.pressed = 0,
 									.time = 1
 							});
@@ -472,13 +472,13 @@ void keyboard_task(void) {
 							layer_on(2);
 							layer_off(1);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand1 << 8, .col = hand2 << 8 },
+								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand1 << 8, .col = hand2 << 8 },
+								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
 									.pressed = 0,
 									.time = 1
 							});
@@ -509,13 +509,13 @@ void keyboard_task(void) {
 						{
 							layer_on(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = LeftHand << 8, .col = RightHand << 8 },
+								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
 									.pressed = 1,
 									.time = 1 /* time should not be 0 */
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = LeftHand << 8, .col = RightHand << 8 },
+								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
 									.pressed = 0,
 									.time = 1 /* time should not be 0 */
 							});
@@ -523,13 +523,13 @@ void keyboard_task(void) {
 							layer_on(1);
 							layer_off(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = LeftHand << 8, .col = RightHand << 8 },
+								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = LeftHand << 8, .col = RightHand << 8 },
+								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
 									.pressed = 0,
 									.time = 1
 							});
@@ -537,13 +537,13 @@ void keyboard_task(void) {
 							layer_on(2);
 							layer_off(1);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = LeftHand << 8, .col = RightHand << 8 },
+								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = LeftHand << 8, .col = RightHand << 8 },
+								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
 									.pressed = 0,
 									.time = 1
 							});
