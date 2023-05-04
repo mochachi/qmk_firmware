@@ -117,12 +117,12 @@ void matrix_scan_perf_task(void) {
 #endif
 
 #ifdef MATRIX_HAS_GHOST
-extern const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS];
+extern const uint16_t keymaps[MATRIX_ROWS][MATRIX_COLS][3];
 static matrix_row_t   get_real_keys(uint8_t row, matrix_row_t rowdata) {
     matrix_row_t out = 0;
     for (uint8_t col = 0; col < MATRIX_COLS; col++) {
         // read each key in the row data and check if the keymap defines it as a real key
-        if (pgm_read_byte(&keymaps[0][row][col]) && (rowdata & (1 << col))) {
+        if (pgm_read_byte(&keymaps[row][col][0]) && (rowdata & (1 << col))) {
             // this creates new row data, if a key is defined in the keymap, it will be set here
             out |= 1 << col;
         }
@@ -504,8 +504,8 @@ void keyboard_task(void) {
 					LoopCount++;
 					if (LoopCount > 500)
 					{
-						if (LoopCount % 6 == 0 || keymaps[0][LeftHand][RightHand] == KC_MS_UP || keymaps[0][LeftHand][RightHand] == KC_MS_DOWN 
-							|| keymaps[0][LeftHand][RightHand] == KC_MS_LEFT || keymaps[0][LeftHand][RightHand] == KC_MS_RIGHT)
+						if (LoopCount % 6 == 0 || keymaps[LeftHand][RightHand][0] == KC_MS_UP || keymaps[LeftHand][RightHand][0] == KC_MS_DOWN
+							|| keymaps[LeftHand][RightHand][0] == KC_MS_LEFT || keymaps[LeftHand][RightHand][0] == KC_MS_RIGHT)
 						{
 							layer_on(0);
 							action_exec((keyevent_t) {
