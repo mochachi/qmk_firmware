@@ -339,34 +339,6 @@ void keyboard_task(void) {
 			case 0:
 				if (matrix_row & 16)
 				{
-					LeftHand |= 16;
-				}
-				if (matrix_row & 8)
-				{
-					LeftHand |= 8;
-				}
-				if (matrix_row & 4)
-				{
-					LeftHand |= 4;
-				}
-				break;
-			case 1:
-				if (matrix_row & 2)
-				{
-					LeftHand |= 2;
-				}
-				break;
-			case 2:
-				break;
-			case 3:
-				if (matrix_row & 32)
-				{
-					LeftHand |= 1;
-				}
-				break;
-			case 4:
-				if (matrix_row & 16)
-				{
 					RightHand |= 16;
 				}
 				if (matrix_row & 8)
@@ -378,10 +350,38 @@ void keyboard_task(void) {
 					RightHand |= 4;
 				}
 				break;
-			case 5:
+			case 1:
 				if (matrix_row & 2)
 				{
 					RightHand |= 2;
+				}
+				break;
+			case 2:
+				break;
+			case 3:
+				if (matrix_row & 32)
+				{
+					RightHand |= 1;
+				}
+				break;
+			case 4:
+				if (matrix_row & 16)
+				{
+					LeftHand |= 16;
+				}
+				if (matrix_row & 8)
+				{
+					LeftHand |= 8;
+				}
+				if (matrix_row & 4)
+				{
+					LeftHand |= 4;
+				}
+				break;
+			case 5:
+				if (matrix_row & 2)
+				{
+					LeftHand |= 2;
 				}
 				break;
 			case 6:
@@ -389,7 +389,7 @@ void keyboard_task(void) {
 			case 7:
 				if (matrix_row & 32)
 				{
-					RightHand |= 1;
+					LeftHand |= 1;
 				}
 				break;
 		}
