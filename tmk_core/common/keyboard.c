@@ -441,16 +441,238 @@ void keyboard_task(void) {
 					{
 						if (upDown == 0)
 						{
+							int hand12 = 0;
+							switch (hand1)
+							{
+							case 0:
+								hand12 = 0;
+								break;
+
+							case 1:
+								hand12 = 5;
+								break;
+							case 2:
+								hand12 = 4;
+								break;
+							case 3:
+								hand12 = 9;
+								break;
+							case 4:
+								hand12 = 3;
+								break;
+							case 5:
+								hand12 = 13;
+								break;
+
+							case 6:
+								hand12 = 8;
+								break;
+							case 7:
+								hand12 = 21;
+								break;
+							case 8:
+								hand12 = 2;
+								break;
+							case 9:
+								hand12 = 15;
+								break;
+							case 10:
+								hand12 = 12;
+								break;
+
+							case 11:
+								hand12 = 26;
+								break;
+							case 12:
+								hand12 = 7;
+								break;
+							case 13:
+								hand12 = 29;
+								break;
+							case 14:
+								hand12 = 25;
+								break;
+							case 15:
+								hand12 = 16;
+								break;
+
+							case 16:
+								hand12 = 1;
+								break;
+							case 17:
+								hand12 = 10;
+								break;
+							case 18:
+								hand12 = 14;
+								break;
+							case 19:
+								hand12 = 22;
+								break;
+							case 20:
+								hand12 = 11;
+								break;
+
+							case 21:
+								hand12 = 27;
+								break;
+							case 22:
+								hand12 = 30;
+								break;
+							case 23:
+								hand12 = 17;
+								break;
+							case 24:
+								hand12 = 6;
+								break;
+							case 25:
+								hand12 = 23;
+								break;
+
+							case 26:
+								hand12 = 28;
+								break;
+							case 27:
+								hand12 = 18;
+								break;
+							case 28:
+								hand12 = 24;
+								break;
+							case 29:
+								hand12 = 19;
+								break;
+							case 30:
+								hand12 = 20;
+								break;
+
+							case 31:
+								hand12 = 31;
+								break;
+
+							default:
+								break;
+							}
+
+							int hand22 = 0;
+							switch (hand2)
+							{
+							case 0:
+								hand22 = 0;
+								break;
+
+							case 1:
+								hand22 = 5;
+								break;
+							case 2:
+								hand22 = 4;
+								break;
+							case 3:
+								hand22 = 9;
+								break;
+							case 4:
+								hand22 = 3;
+								break;
+							case 5:
+								hand22 = 13;
+								break;
+
+							case 6:
+								hand22 = 8;
+								break;
+							case 7:
+								hand22 = 21;
+								break;
+							case 8:
+								hand22 = 2;
+								break;
+							case 9:
+								hand22 = 15;
+								break;
+							case 10:
+								hand22 = 12;
+								break;
+
+							case 11:
+								hand22 = 26;
+								break;
+							case 12:
+								hand22 = 7;
+								break;
+							case 13:
+								hand22 = 29;
+								break;
+							case 14:
+								hand22 = 25;
+								break;
+							case 15:
+								hand22 = 16;
+								break;
+
+							case 16:
+								hand22 = 1;
+								break;
+							case 17:
+								hand22 = 10;
+								break;
+							case 18:
+								hand22 = 14;
+								break;
+							case 19:
+								hand22 = 22;
+								break;
+							case 20:
+								hand22 = 11;
+								break;
+
+							case 21:
+								hand22 = 27;
+								break;
+							case 22:
+								hand22 = 30;
+								break;
+							case 23:
+								hand22 = 17;
+								break;
+							case 24:
+								hand22 = 6;
+								break;
+							case 25:
+								hand22 = 23;
+								break;
+
+							case 26:
+								hand22 = 28;
+								break;
+							case 27:
+								hand22 = 18;
+								break;
+							case 28:
+								hand22 = 24;
+								break;
+							case 29:
+								hand22 = 19;
+								break;
+							case 30:
+								hand22 = 20;
+								break;
+
+							case 31:
+								hand22 = 31;
+								break;
+
+							default:
+								break;
+							}
+
 							upDown = 1;
 							layer_on(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
+								.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 									.pressed = 1,
 									.time = 1 /* time should not be 0 */
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
+								.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 									.pressed = 0,
 									.time = 1 /* time should not be 0 */
 							});
@@ -458,13 +680,13 @@ void keyboard_task(void) {
 							layer_on(1);
 							layer_off(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
+								.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
+								.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 									.pressed = 0,
 									.time = 1
 							});
@@ -472,13 +694,13 @@ void keyboard_task(void) {
 							layer_on(2);
 							layer_off(1);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
+								.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = hand2 << 8, .col = hand1 << 8 },
+								.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 									.pressed = 0,
 									.time = 1
 							});
@@ -508,14 +730,237 @@ void keyboard_task(void) {
 							|| keymaps[LeftHand][RightHand][0] == KC_MS_LEFT || keymaps[LeftHand][RightHand][0] == KC_MS_RIGHT)
 						{
 							layer_on(0);
+
+							int LeftHand2 = 0;
+							switch (LeftHand)
+							{
+							case 0:
+								LeftHand2 = 0;
+								break;
+
+							case 1:
+								LeftHand2 = 5;
+								break;
+							case 2:
+								LeftHand2 = 4;
+								break;
+							case 3:
+								LeftHand2 = 9;
+								break;
+							case 4:
+								LeftHand2 = 3;
+								break;
+							case 5:
+								LeftHand2 = 13;
+								break;
+
+							case 6:
+								LeftHand2 = 8;
+								break;
+							case 7:
+								LeftHand2 = 21;
+								break;
+							case 8:
+								LeftHand2 = 2;
+								break;
+							case 9:
+								LeftHand2 = 15;
+								break;
+							case 10:
+								LeftHand2 = 12;
+								break;
+
+							case 11:
+								LeftHand2 = 26;
+								break;
+							case 12:
+								LeftHand2 = 7;
+								break;
+							case 13:
+								LeftHand2 = 29;
+								break;
+							case 14:
+								LeftHand2 = 25;
+								break;
+							case 15:
+								LeftHand2 = 16;
+								break;
+
+							case 16:
+								LeftHand2 = 1;
+								break;
+							case 17:
+								LeftHand2 = 10;
+								break;
+							case 18:
+								LeftHand2 = 14;
+								break;
+							case 19:
+								LeftHand2 = 22;
+								break;
+							case 20:
+								LeftHand2 = 11;
+								break;
+
+							case 21:
+								LeftHand2 = 27;
+								break;
+							case 22:
+								LeftHand2 = 30;
+								break;
+							case 23:
+								LeftHand2 = 17;
+								break;
+							case 24:
+								LeftHand2 = 6;
+								break;
+							case 25:
+								LeftHand2 = 23;
+								break;
+
+							case 26:
+								LeftHand2 = 28;
+								break;
+							case 27:
+								LeftHand2 = 18;
+								break;
+							case 28:
+								LeftHand2 = 24;
+								break;
+							case 29:
+								LeftHand2 = 19;
+								break;
+							case 30:
+								LeftHand2 = 20;
+								break;
+
+							case 31:
+								LeftHand2 = 31;
+								break;
+
+							default:
+								break;
+							}
+
+							int RightHand2 = 0;
+							switch (RightHand)
+							{
+							case 0:
+								RightHand2 = 0;
+								break;
+
+							case 1:
+								RightHand2 = 5;
+								break;
+							case 2:
+								RightHand2 = 4;
+								break;
+							case 3:
+								RightHand2 = 9;
+								break;
+							case 4:
+								RightHand2 = 3;
+								break;
+							case 5:
+								RightHand2 = 13;
+								break;
+
+							case 6:
+								RightHand2 = 8;
+								break;
+							case 7:
+								RightHand2 = 21;
+								break;
+							case 8:
+								RightHand2 = 2;
+								break;
+							case 9:
+								RightHand2 = 15;
+								break;
+							case 10:
+								RightHand2 = 12;
+								break;
+
+							case 11:
+								RightHand2 = 26;
+								break;
+							case 12:
+								RightHand2 = 7;
+								break;
+							case 13:
+								RightHand2 = 29;
+								break;
+							case 14:
+								RightHand2 = 25;
+								break;
+							case 15:
+								RightHand2 = 16;
+								break;
+
+							case 16:
+								RightHand2 = 1;
+								break;
+							case 17:
+								RightHand2 = 10;
+								break;
+							case 18:
+								RightHand2 = 14;
+								break;
+							case 19:
+								RightHand2 = 22;
+								break;
+							case 20:
+								RightHand2 = 11;
+								break;
+
+							case 21:
+								RightHand2 = 27;
+								break;
+							case 22:
+								RightHand2 = 30;
+								break;
+							case 23:
+								RightHand2 = 17;
+								break;
+							case 24:
+								RightHand2 = 6;
+								break;
+							case 25:
+								RightHand2 = 23;
+								break;
+
+							case 26:
+								RightHand2 = 28;
+								break;
+							case 27:
+								RightHand2 = 18;
+								break;
+							case 28:
+								RightHand2 = 24;
+								break;
+							case 29:
+								RightHand2 = 19;
+								break;
+							case 30:
+								RightHand2 = 20;
+								break;
+
+							case 31:
+								RightHand2 = 31;
+								break;
+
+							default:
+								break;
+							}
+
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
+								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 									.pressed = 1,
 									.time = 1 /* time should not be 0 */
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
+								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 									.pressed = 0,
 									.time = 1 /* time should not be 0 */
 							});
@@ -523,13 +968,13 @@ void keyboard_task(void) {
 							layer_on(1);
 							layer_off(0);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
+								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
+								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 									.pressed = 0,
 									.time = 1
 							});
@@ -537,13 +982,13 @@ void keyboard_task(void) {
 							layer_on(2);
 							layer_off(1);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
+								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 									.pressed = 1,
 									.time = 1
 							});
 							//wait_ms(20);
 							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand << 8, .col = LeftHand << 8 },
+								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 									.pressed = 0,
 									.time = 1
 							});
