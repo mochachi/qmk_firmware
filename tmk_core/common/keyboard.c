@@ -310,10 +310,10 @@ matrix_row_t RightHand_old = 0;
 int LoopCount = 0;
 
 void keyboard_task(void) {
-    static matrix_row_t matrix_prev[MATRIX_ROWS];
+    //static matrix_row_t matrix_prev[MATRIX_ROWS];
     static uint8_t      led_status    = 0;
-    matrix_row_t        matrix_row    = 0;
-    matrix_row_t        matrix_change = 0;
+    //matrix_row_t        matrix_row    = 0;
+    //matrix_row_t        matrix_change = 0;
 	matrix_row_t hand1 = 0;
 	matrix_row_t hand2 = 0;
 #ifdef QMK_KEYS_PER_SCAN
@@ -330,69 +330,50 @@ void keyboard_task(void) {
 	RightHand = 0;
 
     if (should_process_keypress()) {
-        for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
-            matrix_row    = matrix_get_row(r);
-            matrix_change = matrix_row ^ matrix_prev[r];
+        //for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
+        //    matrix_row    = matrix_get_row(r);
+        //    matrix_change = matrix_row ^ matrix_prev[r];
             //if (matrix_change) {
-			switch (r)
+			if (matrix_get_row(KAMU_R0) & (1 << KAMU_C0))
 			{
-			case 0:
-				if (matrix_row & 16)
-				{
-					RightHand |= 16;
-				}
-				if (matrix_row & 8)
-				{
-					RightHand |= 8;
-				}
-				if (matrix_row & 4)
-				{
-					RightHand |= 4;
-				}
-				break;
-			case 1:
-				if (matrix_row & 2)
-				{
-					RightHand |= 2;
-				}
-				break;
-			case 2:
-				break;
-			case 3:
-				if (matrix_row & 32)
-				{
-					RightHand |= 1;
-				}
-				break;
-			case 4:
-				if (matrix_row & 16)
-				{
-					LeftHand |= 16;
-				}
-				if (matrix_row & 8)
-				{
-					LeftHand |= 8;
-				}
-				if (matrix_row & 4)
-				{
-					LeftHand |= 4;
-				}
-				break;
-			case 5:
-				if (matrix_row & 2)
-				{
-					LeftHand |= 2;
-				}
-				break;
-			case 6:
-				break;
-			case 7:
-				if (matrix_row & 32)
-				{
-					LeftHand |= 1;
-				}
-				break;
-		}
+				RightHand |= 16;
+			}
+			if (matrix_get_row(KAMU_R1) & (1 << KAMU_C1))
+			{
+				RightHand |= 8;
+			}
+			if (matrix_get_row(KAMU_R2) & (1 << KAMU_C2))
+			{
+				RightHand |= 4;
+			}
+			if (matrix_get_row(KAMU_R3) & (1 << KAMU_C3))
+			{
+				RightHand |= 2;
+			}
+			if (matrix_get_row(KAMU_R4) & (1 << KAMU_C4))
+			{
+				RightHand |= 1;
+			}
+			if (matrix_get_row(KAMU_R5) & (1 << KAMU_C5))
+			{
+				LeftHand |= 16;
+			}
+			if (matrix_get_row(KAMU_R6) & (1 << KAMU_C6))
+			{
+				LeftHand |= 8;
+			}
+			if (matrix_get_row(KAMU_R7) & (1 << KAMU_C7))
+			{
+				LeftHand |= 4;
+			}
+			if (matrix_get_row(KAMU_R8) & (1 << KAMU_C8))
+			{
+				LeftHand |= 2;
+			}
+			if (matrix_get_row(KAMU_R9) & (1 << KAMU_C9))
+			{
+				LeftHand |= 1;
+			}
 			//matrix_prev[r] = matrix_row;
 
 			/*	action_exec((keyevent_t) {
@@ -401,30 +382,30 @@ void keyboard_task(void) {
 			.time = 1
 			});*/
 
-			for (uint8_t c = 0; c < MATRIX_COLS; c++) {
-
-				if (matrix_change & ((matrix_row_t)1 << c)) {
-
-					// record a processed key
-
-					matrix_prev[r] ^= ((matrix_row_t)1 << c);
-
-#ifdef QMK_KEYS_PER_SCAN
-
-					// only jump out if we have processed "enough" keys.
-
-					if (++keys_processed >= QMK_KEYS_PER_SCAN)
-
-#endif
-
-						// process a key per task call
-
-						goto MATRIX_LOOP_END;
-
-				}
-
-			}
-	}
+//			for (uint8_t c = 0; c < MATRIX_COLS; c++) {
+//
+//				if (matrix_change & ((matrix_row_t)1 << c)) {
+//
+//					// record a processed key
+//
+//					matrix_prev[r] ^= ((matrix_row_t)1 << c);
+//
+//#ifdef QMK_KEYS_PER_SCAN
+//
+//					// only jump out if we have processed "enough" keys.
+//
+//					if (++keys_processed >= QMK_KEYS_PER_SCAN)
+//
+//#endif
+//
+//						// process a key per task call
+//
+//						goto MATRIX_LOOP_END;
+//
+//				}
+//
+//			}
+//	}
 
 
 #ifdef MATRIX_HAS_GHOST
@@ -1020,7 +1001,7 @@ void keyboard_task(void) {
 #endif
         action_exec(TICK);
 
-MATRIX_LOOP_END:
+//MATRIX_LOOP_END:
 
 #ifdef DEBUG_MATRIX_SCAN_RATE
     matrix_scan_perf_task();

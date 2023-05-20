@@ -35,6 +35,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS2 32
 #define MATRIX_COLS2 32
 
+#define KAMU_R0 0
+#define KAMU_C0 4
+
+#define KAMU_R1 0
+#define KAMU_C1 3
+
+#define KAMU_R2 0
+#define KAMU_C2 2
+
+#define KAMU_R3 1
+#define KAMU_C3 1
+
+#define KAMU_R4 3
+#define KAMU_C4 5
+
+#define KAMU_R5 4
+#define KAMU_C5 4
+
+#define KAMU_R6 4
+#define KAMU_C6 3
+
+#define KAMU_R7 4
+#define KAMU_C7 2
+
+#define KAMU_R8 5
+#define KAMU_C8 1
+
+#define KAMU_R9 7
+#define KAMU_C9 5
+
+
+
 /*
  * Keyboard Matrix Assignments
  *
