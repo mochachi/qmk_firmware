@@ -311,15 +311,95 @@ matrix_row_t LeftHand_old = 0;
 matrix_row_t RightHand_old = 0;
 int LoopCount = 0;
 
-
-void keyShot(int hand22, int hand12, int layer)
-{
+void keyShot(int hand22, int hand12, int layer) {
     uint16_t word = pgm_read_word(&keymaps[hand22][hand12][layer]);
-    add_key(word);
-    send_keyboard_report();
-    wait_ms(10);
-    del_key(word);
-    send_keyboard_report();
+    if (word == KC_NO) return;
+    if (KC_MS_UP <= word && word <= KC_MS_ACCEL2) {
+        mousekey_on(word);
+        mousekey_send();
+        wait_ms(10);
+        mousekey_off(word);
+        mousekey_send();
+    }
+    else {
+        if (word & QK_LSFT) {
+            add_key(KC_LSFT);
+            send_keyboard_report();
+            //wait_ms(10);
+        }
+        if (word & QK_LCTL) {
+            add_key(KC_LCTL);
+            send_keyboard_report();
+            //wait_ms(10);
+        }
+        if (word & QK_LALT) {
+            add_key(KC_LALT);
+            send_keyboard_report();
+            // wait_ms(10);
+        }
+        if (word & QK_LGUI) {
+            add_key(KC_LGUI);
+            send_keyboard_report();
+            // wait_ms(10);
+        }
+        if (word & QK_RSFT) {
+            add_key(KC_RSFT);
+            send_keyboard_report();
+            // wait_ms(10);
+        }
+        if (word & QK_RCTL) {
+            add_key(KC_RCTL);
+            send_keyboard_report();
+            // wait_ms(10);
+        }
+        if (word & QK_RALT) {
+            add_key(KC_RALT);
+            send_keyboard_report();
+            //wait_ms(10);
+        }
+        if (word & QK_RGUI) {
+            add_key(KC_RGUI);
+            send_keyboard_report();
+            //wait_ms(10);
+        }
+        add_key(word);
+        send_keyboard_report();
+        wait_ms(20);
+        del_key(word);
+        send_keyboard_report();
+        if (word & QK_LSFT) {
+            del_key(KC_LSFT);
+            send_keyboard_report();
+        }
+        if (word & QK_LCTL) {
+            del_key(KC_LCTL);
+            send_keyboard_report();
+        }
+        if (word & QK_LALT) {
+            del_key(KC_LALT);
+            send_keyboard_report();
+        }
+        if (word & QK_LGUI) {
+            del_key(KC_LGUI);
+            send_keyboard_report();
+        }
+        if (word & QK_RSFT) {
+            del_key(KC_RSFT);
+            send_keyboard_report();
+        }
+        if (word & QK_RCTL) {
+            del_key(KC_RCTL);
+            send_keyboard_report();
+        }
+        if (word & QK_RALT) {
+            del_key(KC_RALT);
+            send_keyboard_report();
+        }
+        if (word & QK_RGUI) {
+            del_key(KC_RGUI);
+            send_keyboard_report();
+        }
+    }
 }
 
 void keyboard_task(void) {
@@ -659,19 +739,13 @@ void keyboard_task(void) {
 
 							upDown = 1;
                             keyShot(hand22, hand12, 0);
-                            //uint16_t word  = pgm_read_word(&keymaps[hand22][hand12][0]);
-                            //add_key(word);
-                            //send_keyboard_report();
-                            //wait_ms(100);
-                            //del_key(word);
-                            //send_keyboard_report();
-       //                     layer_on(0);
-       //                     action_exec((keyevent_t){
+                            // layer_on(0);
+							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 							//		.pressed = 1,
 							//		.time = 1 /* time should not be 0 */
 							//});
-							//wait_ms(20);
+							////wait_ms(20);
 							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 							//		.pressed = 0,
@@ -679,22 +753,14 @@ void keyboard_task(void) {
 							//});
 
                             keyShot(hand22, hand12, 1);
-                            //word = pgm_read_word(&keymaps[hand22][hand12][1]);
-                            //add_key(word);
-                            //send_keyboard_report();
-                            //wait_ms(100);
-                            //del_key(word);
-                            //send_keyboard_report();
-
-							//wait_ms(20);
-       //                     layer_on(1);
-       //                     layer_off(0);
-       //                     action_exec((keyevent_t){
+                            // layer_on(1);
+							//layer_off(0);
+							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 							//		.pressed = 1,
 							//		.time = 1
 							//});
-							//wait_ms(20);
+							////wait_ms(20);
 							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 							//		.pressed = 0,
@@ -702,29 +768,24 @@ void keyboard_task(void) {
 							//});
 
                             keyShot(hand22, hand12, 2);
-                            //word = pgm_read_word(&keymaps[hand22][hand12][2]);
-                            //add_key(word);
-                            //send_keyboard_report();
-                            //wait_ms(100);
-                            //del_key(word);
-                            //send_keyboard_report();
-							//wait_ms(20);
-       //                     layer_on(2);
-       //                     layer_off(1);
-       //                     action_exec((keyevent_t){
+                            //ait_ms(20);
+                            // layer_on(2);
+							//layer_off(1);
+							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 							//		.pressed = 1,
 							//		.time = 1
 							//});
-							//wait_ms(20);
+							////wait_ms(20);
 							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
 							//		.pressed = 0,
 							//		.time = 1
 							//});
+                            keyShot(0, 0, 0);
 
-       //                     layer_off(2);
-       //                     layer_on(0);
+							//layer_on(0);
+							//layer_off(2);
 
 							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = 1 << 8, .col = 1 << 8 },
@@ -742,12 +803,13 @@ void keyboard_task(void) {
 				else if (LeftHand != 0 || RightHand != 0)
 				{
 					LoopCount++;
-					if (LoopCount > 500)
+					if (LoopCount > KAMU_REPEAT)
 					{
-						if (LoopCount % 6 == 0 || keymaps[LeftHand][RightHand][0] == KC_MS_UP || keymaps[LeftHand][RightHand][0] == KC_MS_DOWN
-							|| keymaps[LeftHand][RightHand][0] == KC_MS_LEFT || keymaps[LeftHand][RightHand][0] == KC_MS_RIGHT)
+                        uint16_t word = pgm_read_word(&keymaps[LeftHand][RightHand][0]);
+						if (LoopCount % KAMU_REPEAT_FIRE == 0 || word == KC_MS_UP || word == KC_MS_DOWN
+							|| word == KC_MS_LEFT || word == KC_MS_RIGHT)
 						{
-							layer_on(0);
+							//layer_on(0);
 
 							int LeftHand2 = 0;
 							switch (LeftHand)
@@ -971,48 +1033,53 @@ void keyboard_task(void) {
 								break;
 							}
 
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
-									.pressed = 1,
-									.time = 1 /* time should not be 0 */
-							});
-							//wait_ms(20);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
-									.pressed = 0,
-									.time = 1 /* time should not be 0 */
-							});
+                            keyShot(RightHand2, LeftHand2, 0);
+							//action_exec((keyevent_t) {
+							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
+							//		.pressed = 1,
+							//		.time = 1 /* time should not be 0 */
+							//});
+							////wait_ms(20);
+							//action_exec((keyevent_t) {
+							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
+							//		.pressed = 0,
+							//		.time = 1 /* time should not be 0 */
+							//});
 
-							layer_on(1);
-							layer_off(0);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
-									.pressed = 1,
-									.time = 1
-							});
-							//wait_ms(20);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
-									.pressed = 0,
-									.time = 1
-							});
+                            keyShot(RightHand2, LeftHand2, 1);
+       //                     layer_on(1);
+							//layer_off(0);
+							//action_exec((keyevent_t) {
+							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
+							//		.pressed = 1,
+							//		.time = 1
+							//});
+							////wait_ms(20);
+							//action_exec((keyevent_t) {
+							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
+							//		.pressed = 0,
+							//		.time = 1
+							//});
 
-							layer_on(2);
-							layer_off(1);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
-									.pressed = 1,
-									.time = 1
-							});
-							//wait_ms(20);
-							action_exec((keyevent_t) {
-								.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
-									.pressed = 0,
-									.time = 1
-							});
+                            keyShot(RightHand2, LeftHand2, 2);
+                            //wait_ms(20);
+       //                     layer_on(2);
+							//layer_off(1);
+							//action_exec((keyevent_t) {
+							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
+							//		.pressed = 1,
+							//		.time = 1
+							//});
+							////wait_ms(20);
+							//action_exec((keyevent_t) {
+							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
+							//		.pressed = 0,
+							//		.time = 1
+							//});
+                            keyShot(0, 0, 0);
 
-							layer_on(0);
-							layer_off(2);
+							//layer_on(0);
+							//layer_off(2);
 						}
 					}
 				}

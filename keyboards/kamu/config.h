@@ -1,5 +1,5 @@
 /*
-Copyright 2019 kamonanban
+Copyright 2018 ENDO Katsuhiro <ka2hiro@curlybracket.co.jp>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,51 +21,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x0000
+#define PRODUCT_ID      0x3939
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    kamonanban
-#define PRODUCT         manta40
-#define DESCRIPTION     3x6 ortholinear keys and 5 thumb keys custom keyboard
-
-/* #define USE_I2C */
+#define MANUFACTURER    Tabei Tamotu
+#define PRODUCT         Kamu
+#define DESCRIPTION     Yet another split keyboard
 
 /* key matrix size */
-#define MATRIX_ROWS 8
-#define MATRIX_COLS 6
+#define MATRIX_ROWS 2
+#define MATRIX_COLS 5
+
 #define MATRIX_ROWS2 32
 #define MATRIX_COLS2 32
 
 #define KAMU_R0 0
-#define KAMU_C0 4
+#define KAMU_C0 3
 
 #define KAMU_R1 0
-#define KAMU_C1 3
+#define KAMU_C1 2
 
 #define KAMU_R2 0
-#define KAMU_C2 2
+#define KAMU_C2 1
 
-#define KAMU_R3 1
-#define KAMU_C3 1
+#define KAMU_R3 0
+#define KAMU_C3 0
 
-#define KAMU_R4 3
-#define KAMU_C4 5
+#define KAMU_R4 0
+#define KAMU_C4 4
 
-#define KAMU_R5 4
-#define KAMU_C5 4
+#define KAMU_R5 1
+#define KAMU_C5 1
 
-#define KAMU_R6 4
-#define KAMU_C6 3
+#define KAMU_R6 1
+#define KAMU_C6 2
 
-#define KAMU_R7 4
-#define KAMU_C7 2
+#define KAMU_R7 1
+#define KAMU_C7 3
 
-#define KAMU_R8 5
-#define KAMU_C8 1
+#define KAMU_R8 1
+#define KAMU_C8 4
 
-#define KAMU_R9 7
-#define KAMU_C9 5
+#define KAMU_R9 1
+#define KAMU_C9 0
 
-#define KAMU_REPEAT 500
+#define KAMU_REPEAT 2000
 #define KAMU_REPEAT_FIRE 50
 
 /*
@@ -76,46 +75,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * ROWS: AVR pins used for rows, top to bottom
  * DIODE_DIRECTION: COL2ROW = COL = Anode (+), ROW = Cathode (-, marked on diode)
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
+ *                  NO_DIODE = switches are directly connected to AVR pins
  *
 */
-#define MATRIX_ROW_PINS { D4, C6, D7, E6 }
-#define MATRIX_COL_PINS { F4, F5, F6, F7, B1, B3 }
-#define UNUSED_PINS { B2, B4, B5, B6}
+// #define MATRIX_ROW_PINS { D0, D5 }
+// #define MATRIX_COL_PINS { F1, F0, B0 }
+#define DIRECT_PINS { \
+    { D4, C6, D7, E6, B4 } \
+}
+    //{ B2, B3, B1, F7, F6 }
+
+#define UNUSED_PINS //{ B5, D0, D1, D2, D3, B6, B4, E6, D7, C6, D4, F5, F4 }
 
 /* COL2ROW, ROW2COL*/
-#define DIODE_DIRECTION COL2ROW
+////#define DIODE_DIRECTION
 
-/*
- * Split Keyboard specific options, make sure you have 'SPLIT_KEYBOARD = yes' in your rules.mk, and define SOFT_SERIAL_PIN.
- */
-#define SOFT_SERIAL_PIN D2
+// #define BACKLIGHT_PIN B7
+// #define BACKLIGHT_BREATHING
+// #define BACKLIGHT_LEVELS 3
 
-#define RGBLIGHT_SPLIT
-
-#define RGB_DI_PIN D3
+/* Uncomment below if use underglow */
+#define RGB_DI_PIN F4
 #ifdef RGB_DI_PIN
-#define RGBLED_NUM 6
+#define RGBLIGHT_ANIMATIONS
+#define RGBLED_NUM 6 
 #define RGBLIGHT_HUE_STEP 8
 #define RGBLIGHT_SAT_STEP 8
 #define RGBLIGHT_VAL_STEP 8
-#define RGBLIGHT_LIMIT_VAL 128 /* The maximum brightness level */
-#define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
-// /*== all animations enable ==*/
-#define RGBLIGHT_ANIMATIONS
-// /*== or choose animations ==*/
-//   #define RGBLIGHT_EFFECT_BREATHING
-//   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-//   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-//   #define RGBLIGHT_EFFECT_SNAKE
-//   #define RGBLIGHT_EFFECT_KNIGHT
-//   #define RGBLIGHT_EFFECT_CHRISTMAS
-//   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-//   #define RGBLIGHT_EFFECT_RGB_TEST
-//   #define RGBLIGHT_EFFECT_ALTERNATING
 #endif
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCING_DELAY 5
+#define DEBOUNCE 5
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
@@ -165,10 +155,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
-/* key combination for magic key command */
-/* defined by default; to change, uncomment and set to the combination you want */
-// #define IS_COMMAND() (get_mods() == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
-
 /* control how magic key switches layers */
 //#define MAGIC_KEY_SWITCH_LAYER_WITH_FKEYS  true
 //#define MAGIC_KEY_SWITCH_LAYER_WITH_NKEYS  true
@@ -178,8 +164,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MAGIC_KEY_SWITCH_LAYER_WITH_FKEYS
 //#define MAGIC_KEY_SWITCH_LAYER_WITH_NKEYS
 //#define MAGIC_KEY_SWITCH_LAYER_WITH_CUSTOM
-//#define MAGIC_KEY_HELP           H
-//#define MAGIC_KEY_HELP_ALT       SLASH
+//#define MAGIC_KEY_HELP1          H
+//#define MAGIC_KEY_HELP2          SLASH
 //#define MAGIC_KEY_DEBUG          D
 //#define MAGIC_KEY_DEBUG_MATRIX   X
 //#define MAGIC_KEY_DEBUG_KBD      K
@@ -187,8 +173,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MAGIC_KEY_VERSION        V
 //#define MAGIC_KEY_STATUS         S
 //#define MAGIC_KEY_CONSOLE        C
+//#define MAGIC_KEY_LAYER0_ALT1    ESC
+//#define MAGIC_KEY_LAYER0_ALT2    GRAVE
 //#define MAGIC_KEY_LAYER0         0
-//#define MAGIC_KEY_LAYER0_ALT     GRAVE
 //#define MAGIC_KEY_LAYER1         1
 //#define MAGIC_KEY_LAYER2         2
 //#define MAGIC_KEY_LAYER3         3
@@ -198,11 +185,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MAGIC_KEY_LAYER7         7
 //#define MAGIC_KEY_LAYER8         8
 //#define MAGIC_KEY_LAYER9         9
-//#define MAGIC_KEY_BOOTLOADER     B
-//#define MAGIC_KEY_BOOTLOADER_ALT ESC
+//#define MAGIC_KEY_BOOTLOADER     PAUSE
 //#define MAGIC_KEY_LOCK           CAPS
 //#define MAGIC_KEY_EEPROM         E
-//#define MAGIC_KEY_EEPROM_CLEAR   BSPACE
 //#define MAGIC_KEY_NKRO           N
 //#define MAGIC_KEY_SLEEP_LED      Z
 
@@ -278,3 +263,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Bootmagic Lite key configuration */
 // #define BOOTMAGIC_LITE_ROW 0
 // #define BOOTMAGIC_LITE_COLUMN 0
+
+/* Serial settings */
+#define USE_SERIAL
+/* serial.c configuration for split keyboard */
+#define SOFT_SERIAL_PIN D2
+
+//#define EE_HANDS
+#define I2C_MASTER_LEFT
+//#define I2C_MASTER_RIGHT
