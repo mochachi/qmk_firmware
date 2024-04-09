@@ -16,7 +16,8 @@
 //#include QMK_KEYBOARD_H
 #include "keymap_jp.h"
 
-const uint16_t PROGMEM keymaps[MATRIX_ROWS2][MATRIX_COLS2][3] =
+const uint16_t PROGMEM keymaps[3][MATRIX_ROWS2][MATRIX_COLS2][3] =
+{
   {
 	// ����������
 	   { { KC_NO,    KC_NO, KC_NO },
@@ -176,8 +177,170 @@ const uint16_t PROGMEM keymaps[MATRIX_ROWS2][MATRIX_COLS2][3] =
 		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
 		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
 		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO } }
+	},
+  	{
+	// ����������
+	   { { KC_NO,    KC_NO, KC_NO },
+		 { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,     KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_BSPC,  KC_NO, KC_NO }, { KC_ENTER, KC_NO, KC_NO }, { KC_ESCAPE, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_TAB, KC_NO, KC_NO },
+		 { KC_SPACE, KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,     KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,     KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,     KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,     KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_NO,    KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,    KC_NO, KC_NO }, 
+		 { KC_H,     KC_NO, KC_NO }, { KC_M,     KC_NO, KC_NO }, { KC_Y,     KC_NO, KC_NO }, { KC_R,  KC_NO, KC_NO }, { KC_W,   KC_NO, KC_NO },
+		 { KC_P,     KC_NO, KC_NO }, { KC_SPACE, KC_NO, KC_NO }, { KC_K,     KC_NO, KC_NO }, { KC_S,  KC_NO, KC_NO }, { KC_T,   KC_NO, KC_NO },
+	     { KC_B,     KC_NO, KC_NO }, { KC_N,     KC_NO, KC_NO }, { KC_G,     KC_NO, KC_NO }, { KC_Z,  KC_NO, KC_NO }, { KC_D,   KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,          KC_NO, KC_NO },
+		 { KC_1,           KC_NO, KC_NO }, { KC_2,        KC_NO, KC_NO }, { KC_3,       KC_NO, KC_NO }, { KC_4,        KC_NO, KC_NO }, { KC_5,  KC_NO, KC_NO },
+		 { KC_6,           KC_NO, KC_NO }, { KC_7,        KC_NO, KC_NO }, { KC_8,       KC_NO, KC_NO }, { KC_9,        KC_NO, KC_NO }, { KC_0,  KC_NO, KC_NO },
+		 { KC_KP_ASTERISK, KC_NO, KC_NO }, { KC_KP_SLASH, KC_NO, KC_NO }, { KC_KP_PLUS, KC_NO, KC_NO }, { KC_KP_MINUS, KC_NO, KC_NO }, { KC_0,  KC_0,  KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,      KC_NO, KC_NO }, 
+		 { LCTL(KC_H), KC_NO, KC_NO }, { LCTL(KC_M), KC_NO, KC_NO }, { LCTL(KC_Y), KC_NO, KC_NO }, { LCTL(KC_R), KC_NO, KC_NO }, { LCTL(KC_W), KC_NO, KC_NO },
+		 { LCTL(KC_P), KC_NO, KC_NO }, { KC_SPACE,   KC_NO, KC_NO }, { LCTL(KC_K), KC_NO, KC_NO }, { LCTL(KC_S), KC_NO, KC_NO }, { LCTL(KC_T), KC_NO, KC_NO },
+	     { LCTL(KC_B), KC_NO, KC_NO }, { LCTL(KC_N), KC_NO, KC_NO }, { LCTL(KC_G), KC_NO, KC_NO }, { LCTL(KC_Z), KC_NO, KC_NO }, { LCTL(KC_D), KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,      KC_NO, KC_NO },  
+		 { LCTL(KC_A), KC_NO, KC_NO }, { LCTL(KC_E), KC_NO, KC_NO }, { LCTL(KC_I), KC_NO, KC_NO }, { LCTL(KC_O), KC_NO, KC_NO }, { LCTL(KC_U), KC_NO, KC_NO },
+		 { LCTL(KC_F), KC_NO, KC_NO }, { LCTL(KC_X), KC_NO, KC_NO }, { LCTL(KC_Q), KC_NO, KC_NO }, { LCTL(KC_L), KC_NO, KC_NO }, { LCTL(KC_C), KC_NO, KC_NO },
+		 { LCTL(KC_V), KC_NO, KC_NO }, { KC_QUOTE,   KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { LCTL(KC_J), KC_NO, KC_NO }, { KC_DOT,     KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO },  
+		 { KC_A,  KC_NO, KC_NO }, { KC_E,     KC_NO, KC_NO }, { KC_I,     KC_NO, KC_NO }, { KC_O,  KC_NO, KC_NO }, { KC_U,   KC_NO, KC_NO },
+		 { KC_F,  KC_NO, KC_NO }, { KC_X,     KC_NO, KC_NO }, { KC_Q,     KC_NO, KC_NO }, { KC_L,  KC_NO, KC_NO }, { KC_C,   KC_NO, KC_NO },
+		 { KC_V,  KC_NO, KC_NO }, { KC_QUOTE, KC_NO, KC_NO }, { KC_COMMA, KC_NO, KC_NO }, { KC_J,  KC_NO, KC_NO }, { KC_DOT, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
 		 { KC_NO, KC_NO, KC_NO } },
 
+	// ����������
+	  {  { KC_NO,      KC_NO, KC_NO }, 
+		 { LSFT(KC_H), KC_NO, KC_NO }, { LSFT(KC_M), KC_NO, KC_NO }, { LSFT(KC_Y), KC_NO, KC_NO }, { LSFT(KC_R), KC_NO, KC_NO }, { LSFT(KC_W), KC_NO, KC_NO },
+		 { LSFT(KC_P), KC_NO, KC_NO }, { KC_SPACE,   KC_NO, KC_NO }, { LSFT(KC_K), KC_NO, KC_NO }, { LSFT(KC_S), KC_NO, KC_NO }, { LSFT(KC_T), KC_NO, KC_NO },
+		 { LSFT(KC_B), KC_NO, KC_NO }, { LSFT(KC_N), KC_NO, KC_NO }, { LSFT(KC_G), KC_NO, KC_NO }, { LSFT(KC_Z), KC_NO, KC_NO }, { LSFT(KC_D), KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,      KC_NO, KC_NO }, 
+		 { LALT(KC_H), KC_NO, KC_NO }, { LALT(KC_M), KC_NO, KC_NO }, { LALT(KC_Y), KC_NO, KC_NO }, { LALT(KC_R), KC_NO, KC_NO }, { LALT(KC_W), KC_NO, KC_NO },
+		 { LALT(KC_P), KC_NO, KC_NO }, { KC_SPACE,   KC_NO, KC_NO }, { LALT(KC_K), KC_NO, KC_NO }, { LALT(KC_S), KC_NO, KC_NO }, { LALT(KC_T), KC_NO, KC_NO },
+	     { LALT(KC_B), KC_NO, KC_NO }, { LALT(KC_N), KC_NO, KC_NO }, { LALT(KC_G), KC_NO, KC_NO }, { LALT(KC_Z), KC_NO, KC_NO }, { LALT(KC_D), KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+	     { KC_NO,      KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,      KC_NO, KC_NO },  
+		 { LALT(KC_A), KC_NO, KC_NO }, { LALT(KC_E), KC_NO, KC_NO }, { LALT(KC_I), KC_NO, KC_NO }, { LALT(KC_O), KC_NO, KC_NO }, { LALT(KC_U), KC_NO, KC_NO },
+		 { LALT(KC_F), KC_NO, KC_NO }, { LALT(KC_X), KC_NO, KC_NO }, { LALT(KC_Q), KC_NO, KC_NO }, { LALT(KC_L), KC_NO, KC_NO }, { LALT(KC_C), KC_NO, KC_NO },
+		 { LALT(KC_V), KC_NO, KC_NO }, { KC_QUOTE,   KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { LALT(KC_J), KC_NO, KC_NO }, { KC_DOT,     KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO,    KC_NO, KC_NO },
+	     { KC_S,     KC_A,  KC_NO }, { KC_S,     KC_E,  KC_NO }, { KC_S,     KC_I,  KC_NO }, { KC_S,   KC_O,  KC_NO }, { KC_S,   KC_U,  KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_S,     KC_Y,  KC_O  }, { KC_NO,  KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_S,     KC_Y,  KC_A  }, { KC_NO,    KC_NO, KC_NO }, { KC_S,     KC_Y,  KC_U  }, { KC_NO,  KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,    KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+	     { KC_NO,    KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO }, 
+		 { LSFT(KC_A), KC_NO, KC_NO }, { LSFT(KC_E), KC_NO, KC_NO }, { LSFT(KC_I), KC_NO, KC_NO }, { LSFT(KC_O), KC_NO, KC_NO }, { LSFT(KC_U), KC_NO, KC_NO },
+		 { LSFT(KC_F), KC_NO, KC_NO }, { LSFT(KC_X), KC_NO, KC_NO }, { LSFT(KC_Q), KC_NO, KC_NO }, { LSFT(KC_L), KC_NO, KC_NO }, { LSFT(KC_C), KC_NO, KC_NO },
+		 { LSFT(KC_V), KC_NO, KC_NO }, { KC_QUOTE,   KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { LSFT(KC_J), KC_NO, KC_NO }, { KC_DOT,     KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO },
+		 { KC_NO,      KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO },
+		 { KC_B,  KC_A,  KC_NO }, { KC_B,  KC_E,  KC_NO }, { KC_B,  KC_I,  KC_NO }, { KC_B,  KC_O,  KC_NO }, { KC_B,  KC_U,  KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_B,  KC_Y,  KC_O  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_B,  KC_Y,  KC_A  }, { KC_NO, KC_NO, KC_NO }, { KC_B,  KC_Y,  KC_U  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO },
+		 { KC_N,  KC_A,  KC_NO }, { KC_N,  KC_E,  KC_NO }, { KC_N,  KC_I,  KC_NO }, { KC_N,  KC_O,  KC_NO }, { KC_N,  KC_U,  KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_N,  KC_Y,  KC_O  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_N,  KC_Y,  KC_A  }, { KC_NO, KC_NO, KC_NO }, { KC_N,  KC_Y,  KC_U  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO }, 
+	     { KC_G,  KC_A,  KC_NO }, { KC_G,  KC_E,  KC_NO }, { KC_G,  KC_I,  KC_NO }, { KC_G,  KC_O,  KC_NO }, { KC_G,  KC_U,  KC_NO },
+	     { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_G,  KC_Y,  KC_O  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+	     { KC_G,  KC_Y,  KC_A  }, { KC_NO, KC_NO, KC_NO }, { KC_G,  KC_Y,  KC_U  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO },
+		 { KC_Z,  KC_A,  KC_NO }, { KC_Z,  KC_E,  KC_NO }, { KC_Z,  KC_I,  KC_NO }, { KC_Z,  KC_O,  KC_NO }, { KC_Z,  KC_U,  KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_Z,  KC_Y,  KC_O  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_Z,  KC_Y,  KC_A  }, { KC_NO, KC_NO, KC_NO }, { KC_Z,  KC_Y,  KC_U  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO } },
+
+	// ����������
+	  {  { KC_NO, KC_NO, KC_NO },
+		 { KC_D,  KC_A,  KC_NO }, { KC_D,  KC_E,  KC_NO }, { KC_D,  KC_I,  KC_NO }, { KC_D,  KC_O,  KC_NO }, { KC_D,  KC_U,  KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_D,  KC_Y,  KC_O  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_D,  KC_Y,  KC_A  }, { KC_NO, KC_NO, KC_NO }, { KC_D,  KC_Y,  KC_U  }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
+		 { KC_NO, KC_NO, KC_NO } }
+  	},
+  	{
 	// ����������
 	  {  { KC_NO,         KC_NO, KC_NO },
 		 { KC_MS_WH_LEFT, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_MS_WH_RIGHT, KC_NO,          KC_NO }, { KC_MS_WH_DOWN, KC_NO,         KC_NO }, { KC_MS_WH_UP, KC_NO,         KC_NO },
@@ -260,12 +423,12 @@ const uint16_t PROGMEM keymaps[MATRIX_ROWS2][MATRIX_COLS2][3] =
 
 	// ����������
 	  {  { KC_NO,         KC_NO, KC_NO },
-		 { KC_LEFT,       KC_NO, KC_NO }, { KC_SPACE,       KC_NO, KC_NO }, { KC_RIGHT,      KC_NO, KC_NO }, { KC_DOWN, KC_NO, KC_NO }, { KC_UP,       KC_NO, KC_NO },
-		 { LSFT(KC_LEFT), KC_NO, KC_NO }, { LSFT(KC_RIGHT), KC_NO, KC_NO }, { LSFT(KC_DOWN), KC_NO, KC_NO }, { KC_LANG2, KC_NO, KC_NO }, { LSFT(KC_UP), KC_NO, KC_NO },
-		 { KC_NO,         KC_NO, KC_NO }, { KC_NO,          KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO },
-		 { KC_NO,         KC_NO, KC_NO }, { KC_NO,          KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO },
-		 { KC_NO,         KC_NO, KC_NO }, { KC_NO,          KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { KC_LANG1, KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO },
-		 { KC_NO,         KC_NO, KC_NO }, { KC_NO,          KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO },
+		 { KC_LEFT,       KC_NO, KC_NO }, { KC_SPACE,       KC_NO, KC_NO }, { KC_RIGHT,      KC_NO, KC_NO }, { KC_DOWN,         KC_NO, KC_NO }, { KC_UP,           KC_NO, KC_NO },
+		 { LSFT(KC_LEFT), KC_NO, KC_NO }, { LSFT(KC_RIGHT), KC_NO, KC_NO }, { LSFT(KC_DOWN), KC_NO, KC_NO }, { KC_LANG2,        KC_NO, KC_NO }, { LSFT(KC_UP),     KC_NO, KC_NO },
+		 { KC_NO,         KC_NO, KC_NO }, { KC_END,         KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { KC_NO,           KC_NO, KC_NO }, { KC_HOME,         KC_NO, KC_NO },
+		 { KC_NO,         KC_NO, KC_NO }, { KC_NO,          KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { LSFT(KC_PGUP),   KC_NO, KC_NO }, { LSFT(KC_PGDOWN), KC_NO, KC_NO },
+		 { KC_KANA,       KC_NO, KC_NO }, { KC_ZKHK,        KC_NO, KC_NO }, { LSFT(KC_HOME), KC_NO, KC_NO }, { KC_LANG1,        KC_NO, KC_NO }, { LSFT(KC_END),    KC_NO, KC_NO },
+		 { KC_NO,         KC_NO, KC_NO }, { KC_PGUP,        KC_NO, KC_NO }, { KC_NO,         KC_NO, KC_NO }, { KC_NO,           KC_NO, KC_NO }, { KC_PGDOWN,       KC_NO, KC_NO },
 		 { KC_NO,         KC_NO, KC_NO } },
 
 	// ����������
@@ -337,7 +500,7 @@ const uint16_t PROGMEM keymaps[MATRIX_ROWS2][MATRIX_COLS2][3] =
 		 { KC_NO,      KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
 		 { KC_NO,      KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO }, { KC_NO, KC_NO, KC_NO },
 		 { KC_NO,      KC_NO, KC_NO } }
-
+  }
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

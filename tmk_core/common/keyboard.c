@@ -310,9 +310,15 @@ int upDown = 0;
 matrix_row_t LeftHand_old = 0;
 matrix_row_t RightHand_old = 0;
 int LoopCount = 0;
+int layer = 0;
 
-void keyShot(int hand22, int hand12, int layer) {
-    uint16_t word = pgm_read_word(&keymaps[hand22][hand12][layer]);
+void keyShot(int lr, int hand22, int hand12, int ln) {
+	if (hand22 > 15)
+	{
+		lr = 2;
+		hand22 -= 16;
+	}
+    uint16_t word = pgm_read_word(&keymaps[lr][hand22][hand12][ln]);
     if (word == KC_NO) return;
     if (KC_MS_UP <= word && word <= KC_MS_ACCEL2) {
         mousekey_on(word);
@@ -399,6 +405,14 @@ void keyShot(int hand22, int hand12, int layer) {
             del_key(KC_RGUI);
             send_keyboard_report();
         }
+		if (word == KC_LANG1)
+		{
+			layer = 0;
+		}
+		else if (word == KC_LANG2)
+		{
+			layer = 1;
+		}
     }
 }
 
@@ -738,7 +752,7 @@ void keyboard_task(void) {
 							}
 
 							upDown = 1;
-                            keyShot(hand22, hand12, 0);
+                            keyShot(layer, hand22, hand12, 0);
                             // layer_on(0);
 							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = hand22 << 8, .col = hand12 << 8 },
@@ -752,7 +766,7 @@ void keyboard_task(void) {
 							//		.time = 1 /* time should not be 0 */
 							//});
 
-                            keyShot(hand22, hand12, 1);
+                            keyShot(layer, hand22, hand12, 1);
                             // layer_on(1);
 							//layer_off(0);
 							//action_exec((keyevent_t) {
@@ -767,7 +781,7 @@ void keyboard_task(void) {
 							//		.time = 1
 							//});
 
-                            keyShot(hand22, hand12, 2);
+                            keyShot(layer, hand22, hand12, 2);
                             //ait_ms(20);
                             // layer_on(2);
 							//layer_off(1);
@@ -782,7 +796,7 @@ void keyboard_task(void) {
 							//		.pressed = 0,
 							//		.time = 1
 							//});
-                            keyShot(0, 0, 0);
+                            keyShot(layer, 0, 0, 0);
 
 							//layer_on(0);
 							//layer_off(2);
@@ -1033,7 +1047,7 @@ void keyboard_task(void) {
 								break;
 							}
 
-                            keyShot(RightHand2, LeftHand2, 0);
+                            keyShot(layer, RightHand2, LeftHand2, 0);
 							//action_exec((keyevent_t) {
 							//	.key = (keypos_t) { .row = RightHand2 << 8, .col = LeftHand2 << 8 },
 							//		.pressed = 1,
@@ -1046,7 +1060,7 @@ void keyboard_task(void) {
 							//		.time = 1 /* time should not be 0 */
 							//});
 
-                            keyShot(RightHand2, LeftHand2, 1);
+                            keyShot(layer, RightHand2, LeftHand2, 1);
        //                     layer_on(1);
 							//layer_off(0);
 							//action_exec((keyevent_t) {
@@ -1061,7 +1075,7 @@ void keyboard_task(void) {
 							//		.time = 1
 							//});
 
-                            keyShot(RightHand2, LeftHand2, 2);
+                            keyShot(layer, RightHand2, LeftHand2, 2);
                             //wait_ms(20);
        //                     layer_on(2);
 							//layer_off(1);
@@ -1076,7 +1090,7 @@ void keyboard_task(void) {
 							//		.pressed = 0,
 							//		.time = 1
 							//});
-                            keyShot(0, 0, 0);
+                            keyShot(layer, 0, 0, 0);
 
 							//layer_on(0);
 							//layer_off(2);

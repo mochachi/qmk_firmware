@@ -31,7 +31,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_ROWS 2
 #define MATRIX_COLS 5
 
-#define MATRIX_ROWS2 32
+#define MATRIX_ROWS2 16
 #define MATRIX_COLS2 32
 
 #define KAMU_R0 0
