@@ -202,12 +202,12 @@ const uint16_t PROGMEM keymaps[3][MATRIX_ROWS2][MATRIX_COLS2][3] =
 
 	// 〇〇●〇〇
 	  {  { KC_NO,          KC_NO, KC_NO },
-		 { KC_1,           KC_NO, KC_NO }, { KC_2,        KC_NO, KC_NO }, { KC_3,       KC_NO, KC_NO }, { KC_4,        KC_NO, KC_NO }, { KC_5,   KC_NO, KC_NO },
-		 { KC_6,           KC_NO, KC_NO }, { KC_7,        KC_NO, KC_NO }, { KC_8,       KC_NO, KC_NO }, { KC_9,        KC_NO, KC_NO }, { KC_0,   KC_NO, KC_NO },
-		 { KC_KP_ASTERISK, KC_NO, KC_NO }, { KC_KP_SLASH, KC_NO, KC_NO }, { KC_KP_PLUS, KC_NO, KC_NO }, { KC_KP_MINUS, KC_NO, KC_NO }, { KC_0,   KC_0,  KC_NO },
-		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
-		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_DOT, KC_NO, KC_NO },
-		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_1,           KC_NO, KC_NO }, { KC_2,        KC_NO, KC_NO }, { KC_3,       KC_NO, KC_NO }, { KC_4,        KC_NO, KC_NO }, { KC_5,    KC_NO, KC_NO },
+		 { KC_6,           KC_NO, KC_NO }, { KC_7,        KC_NO, KC_NO }, { KC_8,       KC_NO, KC_NO }, { KC_9,        KC_NO, KC_NO }, { KC_0,    KC_NO, KC_NO },
+		 { KC_KP_ASTERISK, KC_NO, KC_NO }, { KC_KP_SLASH, KC_NO, KC_NO }, { KC_KP_PLUS, KC_NO, KC_NO }, { KC_KP_MINUS, KC_NO, KC_NO }, { LSFT(KC_MINS), KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { KC_DOT,      KC_NO, KC_NO }, { KC_0,    KC_0,  KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO },
 		 { KC_NO,          KC_NO, KC_NO } },
 
 	// 〇●〇〇〇
@@ -393,12 +393,12 @@ const uint16_t PROGMEM keymaps[3][MATRIX_ROWS2][MATRIX_COLS2][3] =
 
 	// ●●〇〇●
 	  {  { KC_NO,          KC_NO, KC_NO },
-		 { KC_1,           KC_NO, KC_NO }, { KC_2,        KC_NO, KC_NO }, { KC_3,       KC_NO, KC_NO }, { KC_4,        KC_NO, KC_NO }, { KC_5,   KC_NO, KC_NO },
-		 { KC_6,           KC_NO, KC_NO }, { KC_7,        KC_NO, KC_NO }, { KC_8,       KC_NO, KC_NO }, { KC_9,        KC_NO, KC_NO }, { KC_0,   KC_NO, KC_NO },
-		 { KC_KP_ASTERISK, KC_NO, KC_NO }, { KC_KP_SLASH, KC_NO, KC_NO }, { KC_KP_PLUS, KC_NO, KC_NO }, { KC_KP_MINUS, KC_NO, KC_NO }, { KC_0,   KC_0,  KC_NO },
-		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
-		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_DOT, KC_NO, KC_NO },
-		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,  KC_NO, KC_NO },
+		 { KC_1,           KC_NO, KC_NO }, { KC_2,        KC_NO, KC_NO }, { KC_3,       KC_NO, KC_NO }, { KC_4,        KC_NO, KC_NO }, { KC_5,    KC_NO, KC_NO },
+		 { KC_6,           KC_NO, KC_NO }, { KC_7,        KC_NO, KC_NO }, { KC_8,       KC_NO, KC_NO }, { KC_9,        KC_NO, KC_NO }, { KC_0,    KC_NO, KC_NO },
+		 { KC_KP_ASTERISK, KC_NO, KC_NO }, { KC_KP_SLASH, KC_NO, KC_NO }, { KC_KP_PLUS, KC_NO, KC_NO }, { KC_KP_MINUS, KC_NO, KC_NO }, { LSFT(KC_MINS), KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_COMMA,   KC_NO, KC_NO }, { KC_DOT,      KC_NO, KC_NO }, { KC_0,    KC_0,  KC_NO },
+		 { KC_NO,          KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,      KC_NO, KC_NO }, { KC_NO,       KC_NO, KC_NO }, { KC_NO,   KC_NO, KC_NO },
 		 { KC_NO,          KC_NO, KC_NO } },
 
 	// ●〇〇●●
